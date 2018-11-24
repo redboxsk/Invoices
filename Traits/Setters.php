@@ -1,12 +1,12 @@
 <?php
 /**
-  * This file is part of consoletvs/invoices.
-  *
-  * (c) Erik Campobadal <soc@erik.cat>
-  *
-  * For the full copyright and license information, please view the LICENSE
-  * file that was distributed with this source code.
-  */
+ * This file is part of consoletvs/invoices.
+ *
+ * (c) Erik Campobadal <soc@erik.cat>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace ConsoleTVs\Invoices\Traits;
 
@@ -117,17 +117,33 @@ trait Setters
     }
 
     /**
-     * Set the invoice date.
+     * Set the invoice dates.
      *
-     * @method date
+     * @method dates
      *
-     * @param Carbon $date
+     * @param array $dates
      *
      * @return self
      */
-    public function date(Carbon $date)
+    public function dates($dates)
     {
-        $this->date = $date;
+        $this->dates = Collection::make($dates);
+
+        return $this;
+    }
+
+    /**
+     * Set the invoice payment info.
+     *
+     * @method payment
+     *
+     * @param array $items
+     *
+     * @return self
+     */
+    public function payment($payment_info)
+    {
+        $this->payment_info = Collection::make($payment_info);
 
         return $this;
     }

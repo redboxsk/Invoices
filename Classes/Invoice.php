@@ -1,12 +1,12 @@
 <?php
 /**
-  * This file is part of consoletvs/invoices.
-  *
-  * (c) Erik Campobadal <soc@erik.cat>
-  *
-  * For the full copyright and license information, please view the LICENSE
-  * file that was distributed with this source code.
-  */
+ * This file is part of consoletvs/invoices.
+ *
+ * (c) Erik Campobadal <soc@erik.cat>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace ConsoleTVs\Invoices\Classes;
 
@@ -88,25 +88,18 @@ class Invoice
     public $logo_height;
 
     /**
-     * Invoice Date.
+     * Invoice Dates.
      *
-     * @var Carbon\Carbon
+     * @var array
      */
-    public $date;
+    public $dates;
 
     /**
-     * Delivery Date
+     * Payment info.
      *
-     * @var Carbon\Carbon
+     * @var array
      */
-    public $delivery_date;
-
-    /**
-     * Due Date.
-     *
-     * @var Carbon\Carbon
-     */
-    public $due_date;
+    public $payment_info;
 
     /**
      * Invoice Notes.
@@ -160,7 +153,8 @@ class Invoice
         $this->decimals = config('invoices.decimals');
         $this->logo = config('invoices.logo');
         $this->logo_height = config('invoices.logo_height');
-        $this->date = Carbon::now();
+        $this->dates = Collection::make([]);
+        $this->payment_info = Collection::make(config('invoices.payment_details'));
         $this->business_details = Collection::make(config('invoices.business_details'));
         $this->customer_details = Collection::make([]);
         $this->footnote = config('invoices.footnote');
