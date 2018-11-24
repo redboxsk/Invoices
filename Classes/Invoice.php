@@ -95,6 +95,20 @@ class Invoice
     public $date;
 
     /**
+     * Delivery Date
+     *
+     * @var Carbon\Carbon
+     */
+    public $delivery_date;
+
+    /**
+     * Due Date.
+     *
+     * @var Carbon\Carbon
+     */
+    public $due_date;
+
+    /**
      * Invoice Notes.
      *
      * @var string
