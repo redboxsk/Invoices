@@ -60,6 +60,7 @@
         </div>
     </div>
     <br />
+    <br />
     <div class="row">
         <div class="col-xs-4">
             @lang('invoices::invoices.iban')<br/>
