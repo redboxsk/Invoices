@@ -69,7 +69,42 @@ trait Setters
     }
 
     /**
-     * Set the invoice tax.
+     *
+     * Set IC DPH.
+     *
+     * @method icDph
+     *
+     * @param string $value
+     *
+     * @return self
+     */
+    public function icDph($value)
+    {
+        $this->ic_dph = $value;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Set price without VAT.
+     *
+     * @method price
+     *
+     * @param float $price
+     *
+     * @return self
+     */
+    public function price($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Set VAT.
      *
      * @method tax
      *
@@ -85,17 +120,17 @@ trait Setters
     }
 
     /**
-     * Set the invoice tax type.
+     * Set the type of delivery, payment.
      *
-     * @method taxType
+     * @method types
      *
-     * @param string $tax_type
+     * @param array $types
      *
      * @return self
      */
-    public function taxType($tax_type)
+    public function types($types)
     {
-        $this->tax_type = $tax_type;
+        $this->types = Collection::make($types);
 
         return $this;
     }

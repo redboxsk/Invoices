@@ -81,13 +81,15 @@ return [
     */
 
     'business_details' => [
-        'name'        => 'My Company',
-        'id'          => '1234567890',
-        'phone'       => '+34 123 456 789',
-        'location'    => 'Main Street 1st',
-        'zip'         => '08241',
-        'city'        => 'Barcelona',
-        'country'     => 'Spain',
+        'name'    => 'My Company',
+        'street'  => 'Street 1',
+        'zip'     => '08241',
+        'city'    => 'Barcelona',
+        'country' => 'Spain',
+        'ico'     => '12345678',
+        'dic'     => '1234567890',
+        'ic_dph'  => 'SK1234567890',
+        'note'    => '...',
     ],
 
     /*

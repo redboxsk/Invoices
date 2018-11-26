@@ -148,8 +148,9 @@ class Invoice
         $this->name = $name;
         $this->items = Collection::make([]);
         $this->currency = config('invoices.currency');
-        $this->tax = config('invoices.tax');
-        $this->tax_type = config('invoices.tax_type');
+        $this->ic_dph = null;
+        $this->price = 0;
+        $this->tax = 0;
         $this->decimals = config('invoices.decimals');
         $this->logo = config('invoices.logo');
         $this->logo_height = config('invoices.logo_height');
@@ -157,6 +158,7 @@ class Invoice
         $this->payment_info = Collection::make(config('invoices.payment_details'));
         $this->business_details = Collection::make(config('invoices.business_details'));
         $this->customer_details = Collection::make([]);
+        $this->types = Collection::make([]);
         $this->footnote = config('invoices.footnote');
     }
 
@@ -186,14 +188,14 @@ class Invoice
      *
      * @return self
      */
-    public function addItem($name, $price, $ammount = 1, $id = '-')
+    public function addItem($name, $quantity, $price, $tax, $rate)
     {
         $this->items->push(Collection::make([
-            'name'       => $name,
-            'price'      => $price,
-            'ammount'    => $ammount,
-            'totalPrice' => number_format(bcmul($price, $ammount, $this->decimals), $this->decimals),
-            'id'         => $id,
+            'name'     => $name,
+            'quantity' => $quantity,
+            'price'    => $price,
+            'tax'      => $tax,
+            'rate'     => $rate
         ]));
 
         return $this;
