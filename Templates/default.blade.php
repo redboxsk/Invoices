@@ -21,7 +21,7 @@
             {{ $invoice->business_details->get('country') }}<br />
             @lang('invoices::invoices.ico'): {{ $invoice->business_details->get('ico') }}<br />
             @lang('invoices::invoices.dic'): {{ $invoice->business_details->get('dic') }}<br />
-            @lang('invoices::invoices.ic_dph'): {{ $invoice->business_details->get('ic_dph') }}<br />
+            @lang('invoices::invoices.ic_dph'): {{ $invoice->ic_dph ? $invoice->ic_dph : $invoice->business_details->get('ic_dph') }}<br />
             {{ $invoice->business_details->get('note') }}<br />
         </div>
         <div class="col-xs-6">
@@ -105,7 +105,6 @@
         @endforeach
         </tbody>
     </table>
-
 </div>
 </body>
 </html>
