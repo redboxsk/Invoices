@@ -28,8 +28,8 @@
             {{ $invoice->business_details->get('zip') }} {{ $invoice->business_details->get('city') }}<br />
             {{ $invoice->business_details->get('country') }}<br />
             @lang('invoices::invoices.ico'): {{ $invoice->business_details->get('ico') }}<br />
-            @lang('invoices::invoices.dic'): {{ $invoice->business_details->get('dic') }}<br />
-            @lang('invoices::invoices.ic_dph'): {{ $invoice->ic_dph ? $invoice->ic_dph : $invoice->business_details->get('ic_dph') }}<br />
+            @if($invoice->business_details->get('dic')) @lang('invoices::invoices.dic'): {{ $invoice->business_details->get('dic') }}<br /> @endif
+            @if($invoice->ic_dph || $invoice->business_details->get('ic_dph')) @lang('invoices::invoices.ic_dph'): {{ $invoice->ic_dph ? $invoice->ic_dph : $invoice->business_details->get('ic_dph') }}<br /> @endif
         </div>
         <div class="col-xs-6">
             <h4>@lang('invoices::invoices.customer')</h4>
