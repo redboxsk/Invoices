@@ -296,4 +296,20 @@ trait Setters
 
         return $this;
     }
+
+    /**
+     * Set the invoice signature.
+     *
+     * @method signature
+     *
+     * @param string $signature
+     *
+     * @return self
+     */
+    public function signature($signature)
+    {
+        $this->signature = $signature;
+
+        return $this;
+    }
 }

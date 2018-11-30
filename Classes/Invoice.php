@@ -151,6 +151,20 @@ class Invoice
     public $customer_details;
 
     /**
+     * Invoice Types.
+     *
+     * @var array
+     */
+    public $types;
+
+    /**
+     * Invoice signature.
+     *
+     * @var string
+     */
+    public $signature;
+
+    /**
      * Stores the PDF object.
      *
      * @var Dompdf\Dompdf
@@ -182,6 +196,7 @@ class Invoice
         $this->business_details = Collection::make(config('invoices.business_details'));
         $this->customer_details = Collection::make([]);
         $this->types = Collection::make([]);
+        $this->signature = null;
     }
 
     /**

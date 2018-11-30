@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         body { font-size: 11px; }
-        h1,h2,h3,h4,p,span,div { font-family: DejaVu Sans; }
+        h1,h2,h3,h4,h5,p,span,div { font-family: DejaVu Sans; }
     </style>
 </head>
 <body>
@@ -15,13 +15,9 @@
         <div class="col-xs-6">
             <img class="img-rounded" height="{{ $invoice->logo_height }}" src="{{ $invoice->logo }}">
         </div>
-    </div>
-    <div class="row">
         <div class="col-xs-6">
             <h2>@lang('invoices::invoices.invoice') {{ $invoice->number }}</h2>
-        </div>
-        <div class="col-xs-6">
-            <h4 style="margin-top: 35px">@lang('invoices::invoices.order') {{ $invoice->order }}</h4>
+            <h5>@lang('invoices::invoices.order') {{ $invoice->order }}</h5>
         </div>
     </div>
     <div class="row">
@@ -34,7 +30,6 @@
             @lang('invoices::invoices.ico'): {{ $invoice->business_details->get('ico') }}<br />
             @lang('invoices::invoices.dic'): {{ $invoice->business_details->get('dic') }}<br />
             @lang('invoices::invoices.ic_dph'): {{ $invoice->ic_dph ? $invoice->ic_dph : $invoice->business_details->get('ic_dph') }}<br />
-            {{ $invoice->business_details->get('note') }}<br />
         </div>
         <div class="col-xs-6">
             <h4>@lang('invoices::invoices.customer')</h4>
@@ -145,6 +140,14 @@
         </tr>
         </tbody>
     </table>
+    <br />
+    @if($invoice->signature)
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-8">
+                <img class="img-rounded" src="{{ $invoice->signature }}">
+            </div>
+        </div>
+    @endif
 </div>
 </body>
 </html>
