@@ -69,7 +69,7 @@
     <br />
     <br />
     <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-4">
             @lang('invoices::invoices.iban')<br/>
             <b>{{ $invoice->payment_info->get('iban') }}</b>
         </div>
@@ -81,7 +81,7 @@
             @lang('invoices::invoices.variable')<br/>
             <b>{{ $invoice->number }}</b>
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-1">
             @lang('invoices::invoices.constant')<br/>
             <b>{{ $invoice->payment_info->get('ks') }}</b>
         </div>
