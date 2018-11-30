@@ -13,6 +13,11 @@
 <div style="width:500pt;">
     <div class="row">
         <div class="col-xs-6">
+            <img class="img-rounded" height="{{ $invoice->logo_height }}" src="{{ $invoice->logo }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
             <h2>@lang('invoices::invoices.invoice') {{ $invoice->number }}</h2>
         </div>
         <div class="col-xs-6">
