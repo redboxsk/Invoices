@@ -53,6 +53,22 @@ trait Setters
     }
 
     /**
+     * Set the order number.
+     *
+     * @method order
+     *
+     * @param int $number
+     *
+     * @return self
+     */
+    public function order($number)
+    {
+        $this->order = $number;
+
+        return $this;
+    }
+
+    /**
      * Set the invoice decimal precision.
      *
      * @method decimals
@@ -115,6 +131,40 @@ trait Setters
     public function tax($tax)
     {
         $this->tax = $tax;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Set VAT rate.
+     *
+     * @method rate
+     *
+     * @param float $rate
+     *
+     * @return self
+     */
+    public function rate($rate)
+    {
+        $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     *
+     * Set payments.
+     *
+     * @method payments
+     *
+     * @param float $payments
+     *
+     * @return self
+     */
+    public function payments($payments)
+    {
+        $this->payments = $payments;
 
         return $this;
     }
@@ -243,22 +293,6 @@ trait Setters
     public function currency($currency)
     {
         $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Set the invoice footnote.
-     *
-     * @method footnote
-     *
-     * @param string $footnote
-     *
-     * @return self
-     */
-    public function footnote($footnote)
-    {
-        $this->footnote = $footnote;
 
         return $this;
     }

@@ -46,6 +46,20 @@ class Invoice
     public $currency;
 
     /**
+     * IC DPH of supplier.
+     *
+     * @var string
+     */
+    public $ic_dph;
+
+    /**
+     * Invoice price.
+     *
+     * @var float
+     */
+    public $price;
+
+    /**
      * Invoice tax.
      *
      * @var int
@@ -53,11 +67,18 @@ class Invoice
     public $tax;
 
     /**
-     * Invoice tax type.
+     * Invoice tax rate.
      *
-     * @var string
+     * @var float
      */
-    public $tax_type;
+    public $rate;
+
+    /**
+     * Invoice payments.
+     *
+     * @var float
+     */
+    public $payments;
 
     /**
      * Invoice number.
@@ -65,6 +86,13 @@ class Invoice
      * @var int
      */
     public $number = null;
+
+    /**
+     * Order number.
+     *
+     * @var int
+     */
+    public $order;
 
     /**
      * Invoice decimal precision.
@@ -123,13 +151,6 @@ class Invoice
     public $customer_details;
 
     /**
-     * Invoice Footnote.
-     *
-     * @var array
-     */
-    public $footnote;
-
-    /**
      * Stores the PDF object.
      *
      * @var Dompdf\Dompdf
@@ -151,6 +172,8 @@ class Invoice
         $this->ic_dph = null;
         $this->price = 0;
         $this->tax = 0;
+        $this->rate = 0;
+        $this->payments = 0;
         $this->decimals = config('invoices.decimals');
         $this->logo = config('invoices.logo');
         $this->logo_height = config('invoices.logo_height');
@@ -159,7 +182,6 @@ class Invoice
         $this->business_details = Collection::make(config('invoices.business_details'));
         $this->customer_details = Collection::make([]);
         $this->types = Collection::make([]);
-        $this->footnote = config('invoices.footnote');
     }
 
     /**

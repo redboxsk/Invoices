@@ -3,6 +3,7 @@
 return [
 
     'invoice'       => 'Faktúra',
+    'order'         => 'č. objednávky',
     'supplier'      => 'Dodávateľ',
     'customer'      => 'Odberateľ',
     'issue_date'    => 'Dátum vystavenia',
@@ -13,10 +14,12 @@ return [
     'iban'          => 'IBAN',
     'swift'         => 'SWIFT',
     'variable'      => 'VS',
+    'constant'      => 'KS',
     'total'         => 'Suma na úhradu',
     'number'        => 'Č.',
     'name'          => 'Názov položky',
     'quantity'      => 'Množstvo',
+    'unit_price'    => 'J.c. bez DPH',
     'price'         => 'Cena bez DPH',
     'rate'          => 'Sadzba DPH',
     'tax'           => 'DPH',
@@ -24,5 +27,9 @@ return [
     'ico'           => 'IČO',
     'dic'           => 'DIČ',
     'ic_dph'        => 'IČ DPH',
+    'summary'       => 'Súčet položiek',
+    'payments'      => 'Prijaté platby',
+    'text'          => 'Fakturujeme Vám za objednávku číslo',
+    'tax_note'      => 'Prenos daňovej povinnosti na platiteľa v zmysle zákona č. 222/2004 Z. z. (zákon o DPH)',
 
 ];

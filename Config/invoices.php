@@ -37,20 +37,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Tax Type
-    |--------------------------------------------------------------------------
-    |
-    | This value is the default tax type that is going to be used in invoices.
-    | You can change it on each invoice individually.
-    | The tax type accepted values are: 'percentage' and 'fixed'
-    | The percentage type calculates the tax depending on the invoice price, and
-    | the fixed type simply adds a fixed ammount to the total price
-    */
-
-    'tax_type' => 'percentage',
-
-    /*
-    |--------------------------------------------------------------------------
     | Default Invoice Logo
     |--------------------------------------------------------------------------
     |
@@ -94,7 +80,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Invoice Buissness Details
+    | Default Invoice Payment Details
     |--------------------------------------------------------------------------
     |
     | This value is going to be the default attribute displayed in
@@ -104,17 +90,7 @@ return [
     'payment_details' => [
         'iban'  => 'Iban',
         'swift' => 'Swift',
+        'ks'    => '0008',
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Default Invoice Footnote
-    |--------------------------------------------------------------------------
-    |
-    | This value is going to be at the end of the document, sometimes telling you
-    | some copyright message or simple legal terms.
-    */
-
-    'footnote' => '',
 
 ];

@@ -11,7 +11,14 @@
 </head>
 <body>
 <div style="width:500pt;">
-    <h2>@lang('invoices::invoices.invoice') {{ $invoice->number }}</h2>
+    <div class="row">
+        <div class="col-xs-6">
+            <h2>@lang('invoices::invoices.invoice') {{ $invoice->number }}</h2>
+        </div>
+        <div class="col-xs-6">
+            <h4 style="margin-top: 35px">@lang('invoices::invoices.order') {{ $invoice->order }}</h4>
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-6">
             <h4>@lang('invoices::invoices.supplier')</h4>
@@ -62,11 +69,11 @@
     <br />
     <br />
     <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-3">
             @lang('invoices::invoices.iban')<br/>
             <b>{{ $invoice->payment_info->get('iban') }}</b>
         </div>
-        <div class="col-xs-2">
+        <div class="col-xs-1">
             @lang('invoices::invoices.swift')<br/>
             <b>{{ $invoice->payment_info->get('swift') }}</b>
         </div>
@@ -75,21 +82,31 @@
             <b>{{ $invoice->number }}</b>
         </div>
         <div class="col-xs-2">
+            @lang('invoices::invoices.constant')<br/>
+            <b>{{ $invoice->payment_info->get('ks') }}</b>
+        </div>
+        <div class="col-xs-2">
             @lang('invoices::invoices.total')<br/>
-            <b>{{ number_format($invoice->price + $invoice->tax, 2, ',', '') }}</b>
+            <b>{{ number_format(($invoice->price + $invoice->tax) - $invoice->payments, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</b>
         </div>
     </div>
     <br />
+    <br />
+    @if($invoice->rate == 0)
+        <p>@lang('invoices::invoices.tax_note')</p>
+    @endif
+    <p>@lang('invoices::invoices.text'): {{ $invoice->order }}</p>
     <table class="table">
         <thead>
         <tr>
             <th>@lang('invoices::invoices.number')</th>
             <th>@lang('invoices::invoices.name')</th>
-            <th>@lang('invoices::invoices.quantity')</th>
-            <th>@lang('invoices::invoices.price')</th>
-            <th>@lang('invoices::invoices.rate')</th>
-            <th>@lang('invoices::invoices.tax')</th>
-            <th>@lang('invoices::invoices.price_tax')</th>
+            <th class="text-right">@lang('invoices::invoices.rate')</th>
+            <th class="text-right">@lang('invoices::invoices.quantity')</th>
+            <th class="text-right">@lang('invoices::invoices.unit_price')</th>
+            <th class="text-right">@lang('invoices::invoices.price')</th>
+            <th class="text-right">@lang('invoices::invoices.tax')</th>
+            <th class="text-right">@lang('invoices::invoices.price_tax')</th>
         </tr>
         </thead>
         <tbody>
@@ -97,13 +114,30 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $item->get('name') }}</td>
-                <td>{{ $item->get('quantity') }}</td>
-                <td>{{ number_format($item->get('price'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
-                <td>{{ round($item->get('rate')) }} %</td>
-                <td>{{ number_format($item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
-                <td>{{ number_format($item->get('price') + $item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ round($item->get('rate')) }} %</td>
+                <td class="text-right">{{ $item->get('quantity') }}</td>
+                <td class="text-right">{{ number_format($item->get('price') / $item->get('quantity'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('price'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('price') + $item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
             </tr>
         @endforeach
+        <tr>
+            <td colspan="5">@lang('invoices::invoices.summary')</td>
+            <td class="text-right"><b>{{ number_format($invoice->price, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</b></td>
+            <td class="text-right"><b>{{ number_format($invoice->tax, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</b></td>
+            <td class="text-right"><b>{{ number_format($invoice->price + $invoice->tax, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</b></td>
+        </tr>
+        @if($invoice->payments)
+            <tr>
+                <td colspan="7">@lang('invoices::invoices.payments')</td>
+                <td class="text-right">{{ number_format($invoice->payments, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+            </tr>
+        @endif
+        <tr>
+            <td colspan="7">@lang('invoices::invoices.total')</td>
+            <td class="text-right"><b>{{ number_format(($invoice->price + $invoice->tax) - $invoice->payments, 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</b></td>
+        </tr>
         </tbody>
     </table>
 </div>
