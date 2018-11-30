@@ -117,10 +117,10 @@
                 <td>{{ $item->get('name') }}</td>
                 <td class="text-right">{{ round($item->get('rate')) }} %</td>
                 <td class="text-right">{{ $item->get('quantity') }}</td>
-                <td class="text-right">{{ number_format($item->get('price') / $item->get('quantity'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
                 <td class="text-right">{{ number_format($item->get('price'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
-                <td class="text-right">{{ number_format($item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
-                <td class="text-right">{{ number_format($item->get('price') + $item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('quantity') * $item->get('price'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('quantity') * $item->get('tax'), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
+                <td class="text-right">{{ number_format($item->get('quantity') * ($item->get('price') + $item->get('tax')), 2, ',', '') }} {{ $invoice->formatCurrency()->symbol }}</td>
             </tr>
         @endforeach
         <tr>
