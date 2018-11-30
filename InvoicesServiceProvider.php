@@ -31,6 +31,7 @@ class InvoicesServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/Templates'           => resource_path('views/vendor/invoices'),
+            __DIR__.'/Translations'        => resource_path('lang/vendor/invoices'),
             __DIR__.'/Config/invoices.php' => config_path('invoices.php'),
         ], 'invoices');
     }
