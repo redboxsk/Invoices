@@ -31,5 +31,7 @@ return [
     'payments'      => 'Prijaté platby',
     'text'          => 'Fakturujeme Vám za objednávku číslo',
     'tax_note'      => 'Prenos daňovej povinnosti na platiteľa v zmysle zákona č. 222/2004 Z. z. (zákon o DPH)',
+    'page'          => 'Strana',
+    'of'            => 'z',
 
 ];

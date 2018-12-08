@@ -29,7 +29,7 @@ class PDF
      * @param ConsoleTVs\Invoices\Classes\Invoice $invoice
      * @param string                              $template
      *
-     * @return Dompdf\Dompdf
+     * @return \Dompdf\Dompdf
      */
     public static function generate(Invoice $invoice, $template = 'default')
     {
@@ -53,6 +53,8 @@ class PDF
 
         $pdf->loadHtml(View::make('invoices::'.$template, ['invoice' => $invoice]));
         $pdf->render();
+
+        $pdf->get_canvas()->page_text(530, 750, trans('invoices::invoices.page') . ' {PAGE_NUM} ' . trans('invoices::invoices.of') . ' {PAGE_COUNT}', null, 8, [0, 0, 0]);
 
         return $pdf;
     }
