@@ -30,7 +30,7 @@ return [
     'summary'       => 'Súčet položiek',
     'payments'      => 'Prijaté platby',
     'text'          => 'Fakturujeme Vám za objednávku číslo',
-    'tax_note'      => 'Prenos daňovej povinnosti na platiteľa v zmysle zákona č. 222/2004 Z. z. (zákon o DPH)',
+    'tax_note'      => 'Prenesenie daňovej povinnosti podľa § 69 ods. 12 písm. f) a g) zákona o DPH.',
     'page'          => 'Strana',
     'of'            => 'z',
 
