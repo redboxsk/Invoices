@@ -34,8 +34,11 @@
         </div>
         <div class="col-xs-6">
             <h4>@lang('invoices::invoices.customer')</h4>
-            @if($invoice->customer_details->get('company_name')) {{ $invoice->customer_details->get('company_name') }}<br /> @endif
-            {{ $invoice->customer_details->get('name') }}<br />
+            @if($invoice->customer_details->get('company_name'))
+                {{ $invoice->customer_details->get('company_name') }}<br />
+            @else
+                {{ $invoice->customer_details->get('name') }}<br />
+            @endif
             {{ $invoice->customer_details->get('street') }}<br />
             {{ $invoice->customer_details->get('zip') }} {{ $invoice->customer_details->get('city') }}
             {{ $invoice->customer_details->get('country') }}<br />
