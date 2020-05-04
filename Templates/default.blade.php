@@ -7,6 +7,7 @@
     <style>
         body { font-size: 11px; }
         h1,h2,h3,h4,h5,p,span,div { font-family: DejaVu Sans; }
+		h1,h2,h3,h4,h5 { font-weight: normal; }
         td { padding: 0 8px 3px 8px !important; }
     </style>
 </head>
